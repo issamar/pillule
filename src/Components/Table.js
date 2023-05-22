@@ -3,7 +3,7 @@ import EditTableData from "./EditTableData";
 
 const Table = ({ data, onDelete, onEdit, editionMode, editMode }) => {
     return (
-        <div>
+        <div className="table-container">
             <table className="table">
                 <thead>
                     <tr>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DropDownList from "./DropDownList";
 
-const AddingForm = ({ onAdd }) => {
+const AddingForm = ({ onAdd, search, data }) => {
     const [currentData, setCurrentData] = useState({
         patient: "",
         medoc: "",

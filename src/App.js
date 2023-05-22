@@ -48,7 +48,7 @@ function App() {
     return (
         <div className="App">
             <div>
-                <AddingForm onAdd={onAdd} />
+                <AddingForm onAdd={onAdd} search={setData} data={data} />
             </div>
             <div>
                 <Table

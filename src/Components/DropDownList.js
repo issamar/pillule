@@ -18,7 +18,7 @@ const DropDownList = ({
         "Sunya",
         "Jasmine",
     ];
-    console.log(options);
+
     return !editMode ? (
         <>
             <input
