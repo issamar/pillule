@@ -7,24 +7,32 @@ function App() {
     const [data, setData] = useState([]);
     const [editMode, setEditMode] = useState(false);
     console.log("global: ", data);
-    useEffect(() => {
-        if (data.length === 0) {
-            return;
-        }
-        localStorage.setItem("Data", JSON.stringify(data));
-    }, [data]);
 
     useEffect(() => {
         let InitData = JSON.parse(localStorage.getItem("Data"));
         setData(InitData);
     }, []);
+
+    useEffect(() => {
+        if (data?.length === 0) {
+            return;
+        }
+        localStorage.setItem("Data", JSON.stringify(data));
+    }, [data]);
     function onAdd(newData) {
         setData((prev) => {
+            console.log("prev", prev);
+            if (prev == null) {
+                setData([]);
+            }
             return [...prev, newData];
         });
     }
 
     function onDelete(indexToDelete) {
+        if (data.length === 1) {
+            return setData(null);
+        }
         setData((prev) => {
             return prev.filter((obj, index) => index !== indexToDelete);
         });

@@ -15,7 +15,7 @@ const Table = ({ data, onDelete, onEdit, editionMode, editMode }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item, index) => {
+                    {data?.map((item, index) => {
                         return !editMode ? (
                             <TableData
                                 item={item}
