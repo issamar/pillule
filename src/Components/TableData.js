@@ -4,7 +4,7 @@ const TableData = ({ item, onDelete, editionMode }) => {
     const [diff, setDiff] = useState();
     useEffect(() => {
         calcDiff();
-    }, []);
+    });
     function calcDiff() {
         const toDay = new Date();
 

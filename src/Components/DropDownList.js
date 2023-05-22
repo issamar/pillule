@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const DropDownList = ({
     handleChange,
     currentData,
@@ -7,7 +5,8 @@ const DropDownList = ({
     handleEditionChange,
     value,
 }) => {
-    const [options, setOptions] = useState([
+    //const [options, setOptions] = useState();
+    const options = [
         "Mercilon",
         "Marilon",
         "Microgynon",
@@ -18,7 +17,7 @@ const DropDownList = ({
         "Meliane",
         "Sunya",
         "Jasmine",
-    ]);
+    ];
     console.log(options);
     return !editMode ? (
         <>

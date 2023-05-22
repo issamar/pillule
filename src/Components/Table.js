@@ -1,6 +1,5 @@
 import TableData from "./TableData";
 import EditTableData from "./EditTableData";
-import { useState } from "react";
 
 const Table = ({ data, onDelete, onEdit, editionMode, editMode }) => {
     return (
