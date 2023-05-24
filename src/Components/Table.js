@@ -24,22 +24,22 @@ const Table = ({
                 </thead>
                 {!search && (
                     <tbody>
-                        {data?.map((item, index) => {
+                        {data?.map((item) => {
                             return !editMode ? (
                                 <TableData
                                     item={item}
-                                    key={index}
+                                    key={item.id}
                                     onDelete={() => {
-                                        onDelete(index);
+                                        onDelete(item.id);
                                     }}
                                     editionMode={editionMode}
                                 />
                             ) : (
                                 <EditTableData
                                     item={item}
-                                    key={index}
+                                    key={item.id}
                                     onEdit={(editItem) =>
-                                        onEdit(editItem, index)
+                                        onEdit(editItem, item.id)
                                     }
                                     editionMode={editionMode}
                                     editMode={editMode}
@@ -50,22 +50,22 @@ const Table = ({
                 )}
                 {search && (
                     <tbody>
-                        {filter?.map((item, index) => {
+                        {filter?.map((item) => {
                             return !editMode ? (
                                 <TableData
                                     item={item}
-                                    key={index}
+                                    key={item.id}
                                     onDelete={() => {
-                                        onDelete(index);
+                                        onDelete(item.id);
                                     }}
                                     editionMode={editionMode}
                                 />
                             ) : (
                                 <EditTableData
                                     item={item}
-                                    key={index}
+                                    key={item.id}
                                     onEdit={(editItem) =>
-                                        onEdit(editItem, index)
+                                        onEdit(editItem, item.id)
                                     }
                                     editionMode={editionMode}
                                     editMode={editMode}

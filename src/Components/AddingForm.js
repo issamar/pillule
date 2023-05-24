@@ -3,6 +3,7 @@ import DropDownList from "./DropDownList";
 
 const AddingForm = ({ onAdd, data, filter, search, searching }) => {
     const [currentData, setCurrentData] = useState({
+        id: crypto.randomUUID(),
         patient: "",
         medoc: "",
         date: "",
@@ -38,7 +39,12 @@ const AddingForm = ({ onAdd, data, filter, search, searching }) => {
     function handleSubmit(e) {
         e.preventDefault();
         onAdd(currentData);
-        setCurrentData({ patient: "", medoc: "", date: "" });
+        setCurrentData({
+            id: crypto.randomUUID(),
+            patient: "",
+            medoc: "",
+            date: "",
+        });
     }
     return (
         <div className="form-container">

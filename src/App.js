@@ -8,7 +8,7 @@ function App() {
     const [editMode, setEditMode] = useState(false);
     const [filter, setFilter] = useState([]);
     const [search, setSearch] = useState(false);
-    console.log("global: ", filter);
+    console.log("global: ", data);
 
     useEffect(() => {
         let InitData = JSON.parse(localStorage.getItem("Data"));
@@ -31,19 +31,30 @@ function App() {
         });
     }
 
-    function onDelete(indexToDelete) {
+    function onDelete(idToDelete) {
         if (data.length === 1) {
             return setData(null);
         }
         setData((prev) => {
-            return prev.filter((obj, index) => index !== indexToDelete);
+            return prev.filter((obj) => obj.id !== idToDelete);
+        });
+        if (filter.length === 1) {
+            return setFilter(null);
+        }
+        setFilter((prev) => {
+            return prev.filter((obj) => obj.id !== idToDelete);
         });
     }
 
-    function onEdit(newEdition, indexToEdit) {
+    function onEdit(newEdition, idToEdit) {
         setData((prev) => {
-            return prev.map((elem, index) =>
-                index === indexToEdit ? newEdition : elem
+            return prev.map((elem) =>
+                elem.id === idToEdit ? newEdition : elem
+            );
+        });
+        setFilter((prev) => {
+            return prev.map((elem) =>
+                elem.id === idToEdit ? newEdition : elem
             );
         });
     }
