@@ -12,8 +12,8 @@ const AddingForm = ({ onAdd, data, filter, search, searching }) => {
     function handleToggle(e) {
         const status = e.target.checked;
         searching(status);
+        filter(data);
         setSearchable(data);
-        console.log("data : ", data);
     }
 
     function handleChange(e) {
@@ -61,6 +61,9 @@ const AddingForm = ({ onAdd, data, filter, search, searching }) => {
                                 type="checkbox"
                                 checked={search}
                                 onChange={handleToggle}
+                                onClick={(prev) => {
+                                    searching(!prev);
+                                }}
                             />
                             <span className="slider round"></span>
                         </label>
