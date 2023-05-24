@@ -1,7 +1,15 @@
 import TableData from "./TableData";
 import EditTableData from "./EditTableData";
 
-const Table = ({ data, onDelete, onEdit, editionMode, editMode }) => {
+const Table = ({
+    data,
+    onDelete,
+    onEdit,
+    editionMode,
+    editMode,
+    search,
+    filter,
+}) => {
     return (
         <div className="table-container">
             <table className="table">
@@ -14,28 +22,58 @@ const Table = ({ data, onDelete, onEdit, editionMode, editMode }) => {
                         <th scope="col">Jours Ecoulés</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {data?.map((item, index) => {
-                        return !editMode ? (
-                            <TableData
-                                item={item}
-                                key={index}
-                                onDelete={() => {
-                                    onDelete(index);
-                                }}
-                                editionMode={editionMode}
-                            />
-                        ) : (
-                            <EditTableData
-                                item={item}
-                                key={index}
-                                onEdit={(editItem) => onEdit(editItem, index)}
-                                editionMode={editionMode}
-                                editMode={editMode}
-                            />
-                        );
-                    })}
-                </tbody>
+                {!search && (
+                    <tbody>
+                        {data?.map((item, index) => {
+                            return !editMode ? (
+                                <TableData
+                                    item={item}
+                                    key={index}
+                                    onDelete={() => {
+                                        onDelete(index);
+                                    }}
+                                    editionMode={editionMode}
+                                />
+                            ) : (
+                                <EditTableData
+                                    item={item}
+                                    key={index}
+                                    onEdit={(editItem) =>
+                                        onEdit(editItem, index)
+                                    }
+                                    editionMode={editionMode}
+                                    editMode={editMode}
+                                />
+                            );
+                        })}
+                    </tbody>
+                )}
+                {search && (
+                    <tbody>
+                        {filter?.map((item, index) => {
+                            return !editMode ? (
+                                <TableData
+                                    item={item}
+                                    key={index}
+                                    onDelete={() => {
+                                        onDelete(index);
+                                    }}
+                                    editionMode={editionMode}
+                                />
+                            ) : (
+                                <EditTableData
+                                    item={item}
+                                    key={index}
+                                    onEdit={(editItem) =>
+                                        onEdit(editItem, index)
+                                    }
+                                    editionMode={editionMode}
+                                    editMode={editMode}
+                                />
+                            );
+                        })}
+                    </tbody>
+                )}
             </table>
         </div>
     );

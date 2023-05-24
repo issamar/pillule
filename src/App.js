@@ -6,7 +6,9 @@ import Table from "./Components/Table";
 function App() {
     const [data, setData] = useState([]);
     const [editMode, setEditMode] = useState(false);
-    console.log("global: ", data);
+    const [filter, setFilter] = useState([]);
+    const [search, setSearch] = useState(false);
+    console.log("global: ", filter);
 
     useEffect(() => {
         let InitData = JSON.parse(localStorage.getItem("Data"));
@@ -48,7 +50,13 @@ function App() {
     return (
         <div className="App">
             <div>
-                <AddingForm onAdd={onAdd} search={setData} data={data} />
+                <AddingForm
+                    onAdd={onAdd}
+                    data={data}
+                    filter={setFilter}
+                    search={search}
+                    searching={setSearch}
+                />
             </div>
             <div>
                 <Table
@@ -57,6 +65,8 @@ function App() {
                     onEdit={onEdit}
                     editionMode={setEditMode}
                     editMode={editMode}
+                    search={search}
+                    filter={filter}
                 />
             </div>
         </div>
